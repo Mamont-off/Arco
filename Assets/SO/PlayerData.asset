@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3eb1567318246d391f150e885ac6a31, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 4819584727177544541, guid: 6040d5d707c2a6f42a06371f7579d793, type: 3}
+  Speed: 6
+  SpawnPosition: {x: 0, y: -4, z: 0}
+  MoveBorder: 9.5
+  BulletPrefab: {fileID: 6743319188472904800, guid: a93c28af3bc161d4e9846bede579d51f,
+    type: 3}
+  Damage: 51
+  BulletSpeed: 10
+  ShootSpeed: 1
+  DestroyDistance: 20

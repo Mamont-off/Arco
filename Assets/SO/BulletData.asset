@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28948a78fa254ee496f7bd3b6f1f0eb8, type: 3}
+  m_Name: BulletData
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 6743319188472904800, guid: a93c28af3bc161d4e9846bede579d51f, type: 3}
+  Damage: 51
+  BulletSpeed: 10
+  ShootSpeed: 0.75
+  DestroyDistance: 10

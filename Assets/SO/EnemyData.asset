@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f9db1ac8d34d0abe828ed1d40625d5, type: 3}
+  m_Name: EnemyData
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 7130104651612512164, guid: 20b8948183b235e4fbe762026eab340c, type: 3}
+  Hp: 10
+  BaseMoveSpeed: 0.05
+  IncreaseSpeedStep: 0.015
+  RowCount: 4
+  MoveBorder: 10
+  MaxHeight: 6
+  EnemyXOffset: 1
+  EnemyYOffset: 1.5
