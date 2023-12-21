@@ -1,4 +1,5 @@
 using Components;
+using Other;
 using Player;
 using Unity.Burst;
 using Unity.Collections;
@@ -51,6 +52,8 @@ namespace Systems
                 ecb.AddComponent(cannonEntity, parentComp);
                 ecb.AddComponent(cannonEntity, new LocalToWorld());
                 ecb.AddComponent(cannonEntity, LocalTransform.Identity);
+                ecb.AddComponent(cannonEntity, new PlaySFXComponent(){Type = SoundType.Shoot});
+                ecb.SetComponentEnabled<PlaySFXComponent>(cannonEntity, false);
             }
 
             foreach (var (spawnData, entity)
@@ -77,6 +80,8 @@ namespace Systems
                         SpeedStep = spawnData.ValueRO.IncreaseSpeedBy,
                         YStep = spawnData.ValueRO.EnemyYOffset
                     });
+                    ecb.AddComponent(enemyInstance, new PlaySFXComponent(){Type = SoundType.Explosion});
+                    ecb.SetComponentEnabled<PlaySFXComponent>(enemyInstance, false);
                     ecb.AddComponent(enemyInstance, new LocalToWorld());
                     ecb.SetComponent(enemyInstance, currentPos);
                     
@@ -92,8 +97,7 @@ namespace Systems
                 
                 ecb.RemoveComponent<EnemySpawnDataComponent>(entity);
             }
-
-
+            
             foreach (var bulletSpawnComp
                      in SystemAPI.Query<RefRW<BulletSpawnComponent>>())
             {

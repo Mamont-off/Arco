@@ -156,6 +156,7 @@ MonoBehaviour:
   PlayerData: {fileID: 11400000, guid: c2c4122823dcccc44854736b943a1b19, type: 2}
   BulletData: {fileID: 11400000, guid: 3d7e8d2c4dbe51f4680c556417d5b96e, type: 2}
   EnemyData: {fileID: 11400000, guid: 7f1a888f16ddccc478764e16b36c8003, type: 2}
+  VisualEffectData: {fileID: 11400000, guid: 9b5f7389e927268478bda03cf059c3cf, type: 2}
 --- !u!4 &1814462795
 Transform:
   m_ObjectHideFlags: 0

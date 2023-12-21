@@ -9,5 +9,6 @@ namespace Autoring
         public PlayerSOData PlayerData;
         public BulletSOData BulletData;
         public EnemySOData EnemyData;
+        public VisualEffectSOData VisualEffectData;
     }
 }

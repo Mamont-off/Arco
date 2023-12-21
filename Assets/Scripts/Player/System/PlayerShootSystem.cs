@@ -1,3 +1,5 @@
+using Components;
+using Other;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
@@ -10,12 +12,15 @@ namespace Player.System
     {
         [ReadOnly] private ComponentLookup<CannonComponent> _cannonComp;
         [ReadOnly] private ComponentLookup<LocalToWorld> _cannonPosition;
+        private ComponentLookup<PlaySFXComponent> _cannonSfxComp;
+        
         
         [BurstCompile]
         public void OnCreate(ref SystemState state)
         {
             _cannonComp = state.GetComponentLookup<CannonComponent>();
             _cannonPosition = state.GetComponentLookup<LocalToWorld>();
+            _cannonSfxComp = state.GetComponentLookup<PlaySFXComponent>();
             
             var disabledComps = new NativeArray<ComponentType>(2, Allocator.Temp)
             {
@@ -31,13 +36,15 @@ namespace Player.System
         {
             _cannonComp.Update(ref state);
             _cannonPosition.Update(ref state);
+            _cannonSfxComp.Update(ref state);
             
             var ecb = new EntityCommandBuffer(Allocator.Temp);
             
             foreach (var (bulletComp, transformComp, entity)
                      in SystemAPI.Query<
                          RefRW<BulletComponent>,
-                         RefRW<LocalTransform>>().WithEntityAccess().WithOptions(EntityQueryOptions.IncludeDisabledEntities))
+                         RefRW<LocalTransform>>().
+                         WithEntityAccess().WithOptions(EntityQueryOptions.IncludeDisabledEntities))
             {
                 if (!SystemAPI.HasComponent<Disabled>(entity))
                 {
@@ -51,6 +58,11 @@ namespace Player.System
 
                 if (_cannonComp.GetRefRO(bulletComp.ValueRO.Cannon).ValueRO.IsReady)
                 {
+                    if (!_cannonSfxComp.IsComponentEnabled(bulletComp.ValueRO.Cannon))
+                    {
+                        ecb.SetComponentEnabled<PlaySFXComponent>(bulletComp.ValueRO.Cannon, true);
+                    }
+                    
                     var canonComp = _cannonComp.GetRefRW(bulletComp.ValueRO.Cannon);
                     canonComp.ValueRW.CurrentTime = 0;
                     canonComp.ValueRW.IsReady = false;

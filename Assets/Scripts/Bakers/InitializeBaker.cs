@@ -58,6 +58,12 @@ namespace Bakers
                 EnemyHeight = authoring.EnemyData.MaxHeight,
                 EnemyCount = 1+authoring.EnemyData.RowCount
             });
+            
+            AddComponent(initEntity, new VFXDataComponent
+            {
+                ExplosionVFX = GetEntity(authoring.VisualEffectData.Explosion, TransformUsageFlags.Dynamic),
+                Lifetime = authoring.VisualEffectData.ExplosionLifeTime
+            });
         }
     }
 }
